@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Manik - Professional Video Editor specializing in YouTube videos, Instagram Reels, and short-form content. Transform your raw footage into captivating visual stories.">
-    <meta name="keywords" content="Video Editor, YouTube Editor, Instagram Reels, Video Editing Services, Content Creator, Manik, Freelance Editor">
+    <meta name="keywords" content="Video Editor, YouTube Editor, Instagram Reels, Video Editing Services, Content Creator, Manik, Freelance Editor, Shorts Editor">
     <meta name="author" content="Manik">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#00D4FF">
@@ -29,7 +29,7 @@
     
     <title>Manik | Professional Video Editor</title>
     
-    <!-- Preload Critical Resources -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -44,9 +44,7 @@
         }
 
         :root {
-            /* ===== ELECTRIC BLUE + CYAN PALETTE ===== */
-            
-            /* Primary - Electric Blue */
+            /* Electric Blue + Cyan Palette */
             --electric: #00D4FF;
             --electric-light: #33DFFF;
             --electric-dark: #00A8CC;
@@ -54,11 +52,9 @@
             --electric-dim: rgba(0, 212, 255, 0.1);
             --electric-subtle: rgba(0, 212, 255, 0.05);
             
-            /* Secondary - Cyan Family */
             --cyan-deep: #00B4D8;
             --cyan-sky: #90E0EF;
             --cyan-ice: #CAF0F8;
-            --cyan-pale: #E0F7FA;
             
             /* Dark Backgrounds */
             --bg-base: #060a10;
@@ -109,7 +105,7 @@
             --transition-slow: 0.5s var(--ease-smooth);
             --transition-slower: 0.7s var(--ease-smooth);
             
-            /* Spacing & Layout */
+            /* Layout */
             --section-padding: 110px 6%;
             --container-max: 1320px;
             --radius-sm: 8px;
@@ -123,18 +119,17 @@
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.65;
             overflow-x: hidden;
         }
 
-        /* ===== Scrollbar ===== */
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -153,19 +148,18 @@
             background: var(--electric-light);
         }
 
-        /* ===== Selection ===== */
+        /* Selection */
         ::selection {
             background: var(--electric);
             color: var(--bg-primary);
         }
 
-        /* ===== Focus States ===== */
+        /* Focus */
         *:focus-visible {
             outline: 2px solid var(--electric);
             outline-offset: 3px;
         }
 
-        /* ===== Base Elements ===== */
         img {
             max-width: 100%;
             height: auto;
@@ -233,7 +227,6 @@
             background: var(--bg-card);
             border-radius: 10px;
             overflow: hidden;
-            position: relative;
         }
 
         .loader-bar {
@@ -247,10 +240,7 @@
         .loader-bar::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             animation: shimmer 1.5s infinite;
         }
@@ -535,7 +525,7 @@
             overflow: hidden;
         }
 
-        /* Animated Gradient Background */
+        /* Gradient Background */
         .hero-gradient {
             position: absolute;
             inset: 0;
@@ -551,7 +541,7 @@
             50% { opacity: 0.8; transform: scale(1.05); }
         }
 
-        /* Grid Pattern */
+        /* Grid */
         .hero-grid {
             position: absolute;
             inset: 0;
@@ -775,7 +765,7 @@
             animation: fadeInUp 0.7s ease 0.4s backwards;
         }
 
-        /* Button Styles */
+        /* Buttons */
         .btn {
             padding: 16px 34px;
             border-radius: var(--radius-md);
@@ -1417,7 +1407,6 @@
         .experience-card:hover .experience-icon {
             transform: scale(1.12) rotate(10deg);
             box-shadow: var(--glow-md);
-            background: var(--electric-dim);
         }
 
         .experience-number {
@@ -1436,104 +1425,163 @@
             margin-top: 10px;
         }
 
-        /* ==================== PORTFOLIO SECTION ==================== */
+        /* ==================== PORTFOLIO VIDEO SECTION ==================== */
         .portfolio {
             background: var(--gradient-dark);
+            overflow: hidden;
         }
 
-        .portfolio-grid {
+        .portfolio-video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1150px;
+            margin: 0 auto;
         }
 
-        .portfolio-item {
-            position: relative;
+        .portfolio-video-card {
+            background: var(--bg-card);
             border-radius: var(--radius-xl);
             overflow: hidden;
-            aspect-ratio: 16/10;
-            border: 2px solid transparent;
+            border: 1px solid var(--border-subtle);
             transition: var(--transition-normal);
-            cursor: pointer;
+            position: relative;
         }
 
-        .portfolio-item:hover {
+        .portfolio-video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-electric);
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: 10;
+        }
+
+        .portfolio-video-card:hover {
             border-color: var(--electric);
-            box-shadow: var(--glow-lg);
-            transform: translateY(-8px);
+            transform: translateY(-10px);
+            box-shadow: var(--glow-lg), var(--shadow-xl);
         }
 
-        .portfolio-item img {
+        .portfolio-video-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Video Wrapper - Vertical Shorts (9:16) */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 177.78%;
+            background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-secondary) 100%);
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: var(--transition-slow);
+            border: none;
         }
 
-        .portfolio-item:hover img {
-            transform: scale(1.1);
+        /* Video Info */
+        .video-info {
+            padding: 24px 26px 28px;
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
         }
 
-        .portfolio-overlay {
+        .video-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 14px;
+            background: var(--electric-dim);
+            border: 1px solid var(--border-accent);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--electric);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 15px;
+        }
+
+        .video-category i {
+            font-size: 0.85rem;
+        }
+
+        .video-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            transition: var(--transition-fast);
+        }
+
+        .portfolio-video-card:hover .video-title {
+            color: var(--electric);
+        }
+
+        .video-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* Portfolio CTA */
+        .portfolio-cta {
+            text-align: center;
+            margin-top: 70px;
+            padding: 55px 45px;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 3px;
+            background: var(--gradient-full);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .portfolio-cta::after {
+            content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, 
-                rgba(8, 12, 18, 0.98) 0%, 
-                rgba(8, 12, 18, 0.6) 40%, 
-                transparent 100%);
+            background: var(--gradient-glow);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .portfolio-cta p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-cta-buttons {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            opacity: 0;
-            transition: var(--transition-normal);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-category {
-            color: var(--electric);
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .portfolio-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .portfolio-link {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-electric);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            gap: 18px;
             justify-content: center;
-            color: var(--bg-primary);
-            font-size: 1rem;
-            transform: translateY(-25px) rotate(-45deg);
-            opacity: 0;
-            transition: var(--transition-normal);
-        }
-
-        .portfolio-item:hover .portfolio-link {
-            transform: translateY(0) rotate(0);
-            opacity: 1;
-        }
-
-        .portfolio-link:hover {
-            transform: scale(1.15);
-            box-shadow: var(--glow-md);
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         /* ==================== TESTIMONIALS SECTION ==================== */
@@ -2149,6 +2197,25 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
+
+            .portfolio-video-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                max-width: 650px;
+            }
+
+            .portfolio-video-card:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                max-width: 320px;
+                justify-self: center;
+            }
         }
 
         @media (max-width: 768px) {
@@ -2220,8 +2287,7 @@
                 font-size: 2.6rem;
             }
 
-            .services-grid,
-            .portfolio-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -2233,6 +2299,44 @@
                 font-size: 3rem;
                 right: 20px;
                 top: 20px;
+            }
+
+            .portfolio-video-grid {
+                grid-template-columns: 1fr;
+                gap: 26px;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .portfolio-video-card:last-child:nth-child(odd) {
+                max-width: none;
+            }
+
+            .video-info {
+                padding: 22px 22px 25px;
+            }
+
+            .video-title {
+                font-size: 1.1rem;
+            }
+
+            .portfolio-cta {
+                padding: 40px 22px;
+                margin-top: 50px;
+            }
+
+            .portfolio-cta p {
+                font-size: 1.05rem;
+            }
+
+            .portfolio-cta-buttons {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .portfolio-cta-buttons .btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .form-row {
@@ -2708,94 +2812,98 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section with YouTube Shorts -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-label"><i class="fas fa-briefcase"></i> My Work</span>
+                <span class="section-label"><i class="fas fa-play-circle"></i> My Work</span>
                 <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
                 <p class="section-desc">
-                    A curated showcase of my best video editing work across various styles and platforms.
+                    A curated showcase of my best video editing work. Watch these projects to see my style and quality.
                 </p>
             </div>
 
-            <div class="portfolio-grid stagger">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop" 
-                         alt="YouTube Tech Review Video Project" 
-                         loading="lazy"
-                         width="600"
-                         height="400">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">YouTube</span>
-                        <h3 class="portfolio-title">Tech Review Video</h3>
+            <div class="portfolio-video-grid stagger">
+                <!-- Video 1 -->
+                <div class="portfolio-video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/_kmgausAHE8" 
+                            title="Video Editing Project 1 by Manik"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
-                    <a href="#" class="portfolio-link" aria-label="View project"><i class="fas fa-play"></i></a>
+                    <div class="video-info">
+                        <span class="video-category">
+                            <i class="fab fa-youtube"></i> YouTube Shorts
+                        </span>
+                        <h3 class="video-title">Creative Edit #1</h3>
+                        <p class="video-desc">Professional transitions & visual effects</p>
+                    </div>
                 </div>
 
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=400&fit=crop" 
-                         alt="Instagram Lifestyle Reel" 
-                         loading="lazy"
-                         width="600"
-                         height="400">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Instagram</span>
-                        <h3 class="portfolio-title">Lifestyle Reel</h3>
+                <!-- Video 2 -->
+                <div class="portfolio-video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/4sXwOnaRPuQ" 
+                            title="Video Editing Project 2 by Manik"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
-                    <a href="#" class="portfolio-link" aria-label="View project"><i class="fas fa-play"></i></a>
+                    <div class="video-info">
+                        <span class="video-category">
+                            <i class="fab fa-youtube"></i> YouTube Shorts
+                        </span>
+                        <h3 class="video-title">Creative Edit #2</h3>
+                        <p class="video-desc">Dynamic storytelling & perfect pacing</p>
+                    </div>
                 </div>
 
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?w=600&h=400&fit=crop" 
-                         alt="Cinematic Travel Documentary" 
-                         loading="lazy"
-                         width="600"
-                         height="400">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Cinematic</span>
-                        <h3 class="portfolio-title">Travel Documentary</h3>
+                <!-- Video 3 -->
+                <div class="portfolio-video-card">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/wVb0XRZKFGo" 
+                            title="Video Editing Project 3 by Manik"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
                     </div>
-                    <a href="#" class="portfolio-link" aria-label="View project"><i class="fas fa-play"></i></a>
+                    <div class="video-info">
+                        <span class="video-category">
+                            <i class="fab fa-youtube"></i> YouTube Shorts
+                        </span>
+                        <h3 class="video-title">Creative Edit #3</h3>
+                        <p class="video-desc">Cinematic color grading & motion</p>
+                    </div>
                 </div>
+            </div>
 
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1579566346927-c68383817a25?w=600&h=400&fit=crop" 
-                         alt="Indie Artist Music Video" 
-                         loading="lazy"
-                         width="600"
-                         height="400">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Music Video</span>
-                        <h3 class="portfolio-title">Indie Artist MV</h3>
-                    </div>
-                    <a href="#" class="portfolio-link" aria-label="View project"><i class="fas fa-play"></i></a>
-                </div>
-
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&h=400&fit=crop" 
-                         alt="Brand Product Showcase" 
-                         loading="lazy"
-                         width="600"
-                         height="400">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Brand</span>
-                        <h3 class="portfolio-title">Product Showcase</h3>
-                    </div>
-                    <a href="#" class="portfolio-link" aria-label="View project"><i class="fas fa-play"></i></a>
-                </div>
-
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop" 
-                         alt="Viral Short Form Content" 
-                         loading="lazy"
-                         width="600"
-                         height="400">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Shorts</span>
-                        <h3 class="portfolio-title">Viral Short</h3>
-                    </div>
-                    <a href="#" class="portfolio-link" aria-label="View project"><i class="fas fa-play"></i></a>
+            <!-- CTA After Portfolio -->
+            <div class="portfolio-cta reveal">
+                <p>Impressed? Let's create something amazing together.</p>
+                <div class="portfolio-cta-buttons">
+                    <a href="https://www.instagram.com/rajputmanik933/" 
+                       class="btn btn-primary" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i> More on Instagram
+                    </a>
+                    <a href="https://wa.me/919528962143?text=Hi%20Manik!%20I%20saw%20your%20portfolio%20and%20I'm%20interested%20in%20working%20with%20you." 
+                       class="btn btn-whatsapp" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Start a Project
+                    </a>
                 </div>
             </div>
         </div>
@@ -2992,11 +3100,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" placeholder="Nitin Rajput" required autocomplete="name">
+                            <input type="text" id="name" name="name" placeholder="Rahul Yadav" required autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="nitin@example.com" required autocomplete="email">
+                            <input type="email" id="email" name="email" placeholder="vishal@example.com" required autocomplete="email">
                         </div>
                     </div>
 
